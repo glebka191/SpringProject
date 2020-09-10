@@ -17,17 +17,9 @@ public class Menu {
     private Set<MenuBooking> menuBookings;
 
     @ElementCollection(targetClass = TypeFood.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "type_food", joinColumns = @JoinColumn(name = "menu_id"))
+    @CollectionTable(name = "type_menu", joinColumns = @JoinColumn(name = "menu_id"))
     @Enumerated(EnumType.STRING)
     private Set<TypeFood> typeFoods;
-
-    public Set<TypeFood> getTypeFoods() {
-        return typeFoods;
-    }
-
-    public void setTypeFoods(Set<TypeFood> typeFoods) {
-        this.typeFoods = typeFoods;
-    }
 
     public Integer getId() {
         return id;
@@ -67,5 +59,13 @@ public class Menu {
 
     public void setMenuBookings(Set<MenuBooking> menuBookings) {
         this.menuBookings = menuBookings;
+    }
+
+    public Set<TypeFood> getTypeFoods() {
+        return typeFoods;
+    }
+
+    public void setTypeFoods(Set<TypeFood> typeFoods) {
+        this.typeFoods = typeFoods;
     }
 }

@@ -11,9 +11,8 @@ public class SideTable {
     private Integer id;
     private Integer size;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "sideTable")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sideTable")
     private Set<Booking> bookings;
-
 
     public Integer getId() {
         return id;

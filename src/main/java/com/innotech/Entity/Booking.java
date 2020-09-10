@@ -14,18 +14,13 @@ public class Booking {
     private Date dateEnd;
     private String status;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "side_table_id", nullable = false)
+    @ManyToOne
     private SideTable sideTable;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "menu_booking_id", unique = true, nullable = false, updatable = false)
-    private MenuBooking menuBooking;
+    @OneToOne
+    private MenuBooking menuBookings;
 
-    @ManyToMany
-    @JoinTable(name = "user_booking",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "booking_id", referencedColumnName = "id"))
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<User> users;
 
     public Long getId() {
@@ -76,12 +71,12 @@ public class Booking {
         this.sideTable = sideTable;
     }
 
-    public MenuBooking getMenuBooking() {
-        return menuBooking;
+    public MenuBooking getMenuBookings() {
+        return menuBookings;
     }
 
-    public void setMenuBooking(MenuBooking menuBooking) {
-        this.menuBooking = menuBooking;
+    public void setMenuBookings(MenuBooking menuBookings) {
+        this.menuBookings = menuBookings;
     }
 
     public Set<User> getUsers() {

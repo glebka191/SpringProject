@@ -9,13 +9,10 @@ public class MenuBooking {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    @OneToOne(optional = false, mappedBy = "menuBooking")
+    @OneToOne(mappedBy = "menuBookings")
     private Booking booking;
 
     @ManyToMany
-    @JoinTable(name = "menu_menubooking",
-                joinColumns = @JoinColumn(name = "menu_id", referencedColumnName = "id"),
-                inverseJoinColumns = @JoinColumn(name = "menu_booking_id", referencedColumnName = "id"))
     private Set<Menu> menus;
 
     public Integer getId() {
