@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Tutorial</title>
+</head>
+<body>
+<h1>Забронировать столик</h1>
+<ul>
+    <li data-th-each="SideTable : ${SideTable}" class="SideTable">
+        <a data-th-href="@{/tables{SideTableId}(SideTableId=${SideTable.id})}"
+           data-th-text="${SideTable.id}"></a>
+    </li>
+</ul>
+</body>
+</html>
