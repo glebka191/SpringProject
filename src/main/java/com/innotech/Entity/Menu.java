@@ -7,9 +7,8 @@ import java.util.Set;
 public class Menu {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-
     private Integer id;
-    private Integer idTypeFood;
+
     private String name;
     private Integer price;
 
@@ -19,7 +18,15 @@ public class Menu {
     @ElementCollection(targetClass = TypeFood.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "type_menu", joinColumns = @JoinColumn(name = "menu_id"))
     @Enumerated(EnumType.STRING)
-    private Set<TypeFood> typeFoods;
+    private Set <TypeFood> typeFoods;
+
+    public Set<TypeFood> getTypeFoods() {
+        return typeFoods;
+    }
+
+    public void setTypeFoods(Set<TypeFood> typeFoods) {
+        this.typeFoods = typeFoods;
+    }
 
     public Integer getId() {
         return id;
@@ -27,14 +34,6 @@ public class Menu {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getIdTypeFood() {
-        return idTypeFood;
-    }
-
-    public void setIdTypeFood(Integer idTypeFood) {
-        this.idTypeFood = idTypeFood;
     }
 
     public String getName() {
@@ -61,11 +60,4 @@ public class Menu {
         this.menuBookings = menuBookings;
     }
 
-    public Set<TypeFood> getTypeFoods() {
-        return typeFoods;
-    }
-
-    public void setTypeFoods(Set<TypeFood> typeFoods) {
-        this.typeFoods = typeFoods;
-    }
 }

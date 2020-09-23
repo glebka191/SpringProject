@@ -1,6 +1,6 @@
 package com.innotech.Entity;
 
-public enum TypeFood {
+public enum  TypeFood {
     SOUP,
     SNACK,
     MEAT,

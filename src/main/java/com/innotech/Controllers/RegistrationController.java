@@ -1,23 +1,25 @@
 package com.innotech.Controllers;
 
 import com.innotech.Entity.User;
-import com.innotech.repo.UserRepo;
 import com.innotech.Service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.innotech.repo.UserRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
-public class WebController {
-    @Autowired
-    private UserRepo userRepo;
-    @Autowired
-    private UserService userService;
+public class RegistrationController {
+    private final UserRepo userRepo;
+    private final UserService userService;
+
+    public RegistrationController(UserRepo userRepo, UserService userService) {
+        this.userRepo = userRepo;
+        this.userService = userService;
+    }
 
     @GetMapping("/")
     public String greeting(){
@@ -30,12 +32,11 @@ public class WebController {
     }
 
     @PostMapping("/registration")
-    public String addUser(User user, Map<String, Object> model) {
+    public String addUser(@Valid User user, Map<String, Object> model) {
         if (!userService.addUser(user)) {
             model.put("message", "User exists!");
             return "registration";
         }
-
         return "redirect:/login";
     }
 

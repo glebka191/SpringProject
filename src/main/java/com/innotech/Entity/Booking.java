@@ -1,6 +1,8 @@
 package com.innotech.Entity;
 
 import javax.persistence.*;
+import java.awt.*;
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.Set;
 
@@ -10,18 +12,22 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Integer numberBooking;
+
+    @Temporal(TemporalType.DATE)
     private Date dateStart;
+
+    @Temporal(TemporalType.DATE)
     private Date dateEnd;
     private String status;
 
-    @ManyToOne
+    @OneToOne
     private SideTable sideTable;
 
-    @OneToOne
-    private MenuBooking menuBookings;
+    @OneToMany(mappedBy = "booking")
+    private Set<MenuBooking> menuBookings;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<User> users;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User user;
 
     public Long getId() {
         return id;
@@ -71,19 +77,19 @@ public class Booking {
         this.sideTable = sideTable;
     }
 
-    public MenuBooking getMenuBookings() {
+    public Set<MenuBooking> getMenuBookings() {
         return menuBookings;
     }
 
-    public void setMenuBookings(MenuBooking menuBookings) {
+    public void setMenuBookings(Set<MenuBooking> menuBookings) {
         this.menuBookings = menuBookings;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

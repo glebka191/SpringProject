@@ -9,11 +9,21 @@ public class MenuBooking {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    @OneToOne(mappedBy = "menuBookings")
+    @ManyToOne
     private Booking booking;
 
     @ManyToMany
     private Set<Menu> menus;
+
+    private Integer count;
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
 
     public Integer getId() {
         return id;

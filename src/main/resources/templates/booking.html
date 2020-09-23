@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>reg form</title>
+</head>
+<body>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<form th:action="@{/booking}" method="post">
+    <div><label> User Name : <input type="text" name="username"/> </label></div>
+    <div><label> SideTable: <input type="text" name="SideTable"/> </label></div>
+    <div><label> DateStart: <input type="Date" name="dateStart"/> </label></div>
+    <div><label> DateEnd: <input type="Date" name="dateEnd"/> </label></div>
+
+    <div><input type="submit" value="Booking"/></div>
+
+</form>
+</body>
+</html>

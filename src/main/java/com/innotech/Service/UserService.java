@@ -15,14 +15,15 @@ import java.util.UUID;
 
 @Service
 public class UserService implements UserDetailsService {
-    @Autowired
-    private UserRepo userRepo;
+    private final UserRepo userRepo;
+    private final PasswordEncoder passwordEncoder;
+    private final MailSender mailSender;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private MailSender mailSender;
+    public UserService(UserRepo userRepo, PasswordEncoder passwordEncoder, MailSender mailSender) {
+        this.userRepo = userRepo;
+        this.passwordEncoder = passwordEncoder;
+        this.mailSender = mailSender;
+    }
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepo.findByUsername(username);
