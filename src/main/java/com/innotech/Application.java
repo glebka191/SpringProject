@@ -1,6 +1,6 @@
 package com.innotech;
 
-import org.springframework.boot.SpringApplication;
+import  org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
@@ -11,3 +11,6 @@ public class Application {
     }
 
 }
+
+//
+// найстрока транзакций спринг дата  история например заказов и тесты, большие буквы, докер.

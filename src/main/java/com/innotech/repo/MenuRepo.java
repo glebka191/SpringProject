@@ -1,6 +1,6 @@
 package com.innotech.repo;
 
-import com.innotech.Entity.Menu;
+import com.innotech.entity.Menu;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
