@@ -1,13 +1,14 @@
 package com.innotech.controllers;
 
 import com.innotech.entity.User;
-import com.innotech.service.UserService;
 import com.innotech.repo.UserRepo;
+import com.innotech.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import javax.validation.Valid;
 import java.util.Map;
 
@@ -37,8 +38,14 @@ public class RegistrationController {
             model.put("message", "User exists!");
             return "registration";
         }
+//        userTesting(user);
         return "redirect:/login";
     }
+
+//    @Transactional(propagation = Propagation.MANDATORY)
+//    public void userTesting(User user){
+//        userRepo.deleteById(1L);
+//    }
 
     @GetMapping("/activate/{code}")
     public String activate(Model model, @PathVariable String code) {
